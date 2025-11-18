@@ -22,9 +22,9 @@ public class CatService {
 
     @PostConstruct
     void init() {
-        cats.add(new Cat("1","Cat1","black"));
-        cats.add(new Cat("2","Cat2","ginger"));
-        cats.add(new Cat("3","Cat3","white"));
+        cats.add(new Cat("1","Cat1","Black"));
+        cats.add(new Cat("2","Cat2","Ginger"));
+        cats.add(new Cat("3","Cat3","White"));
         Repository.saveAll(cats);
     }
 

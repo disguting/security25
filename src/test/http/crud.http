@@ -1,0 +1,47 @@
+### GET ALL ITEMS
+GET http://localhost:8080/api/v1/cats
+###
+
+### GET 1 ITEM
+GET http://localhost:8080/api/v1/cats/3
+###
+
+### DEL 1 ITEM
+DELETE http://localhost:8080/api/v1/cats/2
+###
+
+### CREATE 1 ITEM
+POST http://localhost:8080/api/v1/cats
+Content-Type: application/json
+
+{
+  "name": "cat4",
+  "description": "White/Black"
+}
+###
+
+### UPD 1 ITEM
+PUT http://localhost:8080/api/v1/cats
+Content-Type: application/json
+
+{
+  "id": "2",
+  "name": "Cat22",
+  "description": "3Color"
+}
+###
+
+### GET
+GET http://localhost:8080/api/v1/cats/user
+Accept: text/plain
+###
+
+### GET
+GET http://localhost:8080/api/v1/cats/admin
+Accept: text/plain
+###
+
+### GET
+GET http://localhost:8080/api/v1/cats/unknown
+Accept: text/plain
+###

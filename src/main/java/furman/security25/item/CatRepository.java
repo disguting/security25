@@ -1,7 +1,6 @@
 package furman.security25.item;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /*
@@ -12,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @since 18.11.2025 - 06.13
 */
 @Repository
-public interface ItemRepository extends MongoRepository<Item, String> {
+public interface CatRepository extends MongoRepository<Cat, String> {
 }

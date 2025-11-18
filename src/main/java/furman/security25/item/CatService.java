@@ -15,24 +15,24 @@ import java.util.List;
 */
 @Service
 @AllArgsConstructor
-public class ItemService {
-    private final ItemRepository Repository;
+public class CatService {
+    private final CatRepository Repository;
 
-    private List<Item> items;
+    private List<Cat> cats;
 
     @PostConstruct
     void init() {
-        items.add(new Item("1","name1","description"));
-        items.add(new Item("2","name2","description2"));
-        items.add(new Item("3","name3","description3"));
-        Repository.saveAll(items);
+        cats.add(new Cat("1","Cat1","black"));
+        cats.add(new Cat("2","Cat2","ginger"));
+        cats.add(new Cat("3","Cat3","white"));
+        Repository.saveAll(cats);
     }
 
-    public List<Item> getAll() {
+    public List<Cat> getAll() {
         return Repository.findAll();
     }
 
-    public Item getById(String id) {
+    public Cat getById(String id) {
         return Repository.findById(id).orElse(null);
     }
 
@@ -40,11 +40,11 @@ public class ItemService {
         Repository.deleteById(id);
     }
 
-    public Item create(Item item) {
-        return Repository.save(item);
+    public Cat create(Cat cat) {
+        return Repository.save(cat);
     }
 
-    public Item update(Item item) {
-        return Repository.save(item);
+    public Cat update(Cat cat) {
+        return Repository.save(cat);
     }
 }

@@ -23,7 +23,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "cat4",
+  "name": "Cat Mikolo",
   "description": "White/Black"
 }
 ###

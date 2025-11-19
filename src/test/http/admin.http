@@ -1,0 +1,40 @@
+
+### CREATE ONE CAT
+POST http://localhost:8080/api/v1/admin/cats
+Authorization: Basic admin admin
+Accept: application/json
+Content-Type: application/json
+
+
+{
+  "name": "Cat Mikolo",
+  "description": "White/Black"
+}
+> {%
+    client.global.set("userId", response.body.id);
+%}
+
+
+### DELETE ONE CAT
+DELETE http://localhost:8080/api/v1/admin/cats/{{userId}}
+Authorization: Basic admin admin
+Accept: application/json
+###
+
+### GET ONE CAT
+GET http://localhost:8080/api/v1/cats/{{userId}}
+Authorization: Basic admin admin
+Accept: application/json
+
+### UPD 1 CAT
+PUT http://localhost:8080/api/v1/cats
+Authorization: Basic admin admin
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "2",
+  "name": "Cat Igor",
+  "description": "3Color"
+}
+###

@@ -36,8 +36,8 @@ public class SecurityConfig {
         http.csrf(csrf ->csrf.disable())
                 .authorizeHttpRequests( req ->
                         req.requestMatchers("/index.html").permitAll()
-                                .requestMatchers("/api/v1/cats/**").hasRole("ADMIN")
-                                .requestMatchers("/api/v1/cats/**").hasAnyRole("USER","ADMIN")
+                                .requestMatchers("/api/v1/cats/admin").hasRole("ADMIN")
+                                .requestMatchers("/api/v1/cats/user").hasAnyRole("USER","ADMIN")
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
 

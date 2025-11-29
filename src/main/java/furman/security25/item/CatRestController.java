@@ -1,6 +1,7 @@
 package furman.security25.item;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/cats")
 @AllArgsConstructor
+
 
 public class CatRestController {
     private final CatService service;
@@ -38,16 +40,28 @@ public class CatRestController {
         return service.update(cat);
     }
 
-    @GetMapping("user")
-    public String helloUser(){
-        return "hello User";
+    @GetMapping("/hello/user")
+    @PreAuthorize("hasAnyRole('USER', 'SUPERADMIN')")
+    public String helloUser() {
+        return "Hello User!";
     }
-    @GetMapping("admin")
-    public String helloAdmin(){
-        return "hello Admin";
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPERADMIN')")
+    @GetMapping("hello/admin")
+    public String helloAdmin() {
+        return "Hello Admin!";
     }
-    @GetMapping("unknown")
-    public String helloUnknown(){
-        return "hello Unknown";
+
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN', 'SUPERADMIN')")
+    @GetMapping("hello/unknown")
+    public String helloUnknown() {
+        return "Hello Unknown!";
     }
+
+    @GetMapping("hello/stranger")
+    public String helloStranger() {
+        return "Hello Stranger!";
+    }
+
+
 }

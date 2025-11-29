@@ -42,21 +42,21 @@ Content-Type: application/json
 ###
 
 ### GET
-GET http://localhost:8080/api/v1/cats/user
+GET http://localhost:8080/api/v1/cats/hello/user
 Authorization: Basic admin admin
 Accept: application/json
 Accept: text/plain
 ###
 
 ### GET
-GET http://localhost:8080/api/v1/cats/admin
+GET http://localhost:8080/api/v1/cats/hello/admin
 Authorization: Basic admin admin
 Accept: application/json
 Accept: text/plain
 ###
 
 ### GET
-GET http://localhost:8080/api/v1/cats/unknown
+GET http://localhost:8080/api/v1/cats/hello/unknown
 Authorization: Basic admin admin
 Accept: application/json
 Accept: text/plain

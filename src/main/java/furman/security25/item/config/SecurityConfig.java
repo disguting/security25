@@ -1,7 +1,11 @@
 package furman.security25.item.config;
 
+import org.springframework.aop.Advisor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authorization.AuthorizationManager;
+import org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -22,8 +26,13 @@ import org.springframework.security.config.Customizer;
 */
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(securedEnabled = true)
 
 public class SecurityConfig {
+
+    public static Advisor preAuthorizeMethodInterceptor(){
+        return AuthorizationManagerBeforeMethodInterceptor.preAuthorize();
+    };
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -36,8 +45,8 @@ public class SecurityConfig {
         http.csrf(csrf ->csrf.disable())
                 .authorizeHttpRequests( req ->
                         req.requestMatchers("/index.html").permitAll()
-                                .requestMatchers("/api/v1/cats/admin").hasRole("ADMIN")
-                                .requestMatchers("/api/v1/cats/user").hasAnyRole("USER","ADMIN")
+                                //.requestMatchers("/api/v1/cats/admin").hasRole("ADMIN")
+                                //.requestMatchers("/api/v1/cats/user").hasAnyRole("USER","ADMIN")
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
 

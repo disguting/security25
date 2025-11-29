@@ -20,7 +20,7 @@ import org.springframework.data.annotation.Id;
 @ToString
 
 
-public class Cat {
+public class Cat extends AuditMetaData{
     @Id
     private String id;
     private String name;
